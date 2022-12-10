@@ -25,4 +25,9 @@ public class BCR_OfficeController {
     public List<BCR_Office> getOfficesByRegex(@PathVariable String regex) {
         return service.getOfficesByRegex(regex);
     }
+
+    @GetMapping("/getAllInCityByRegex/{regex}/{city}")
+    public List<BCR_Office> getAllOfficeInCityByRegex(@PathVariable String regex, @PathVariable String city) {
+        return service.getBCR_OfficeInCityByRegex(regex, city);
+    }
 }

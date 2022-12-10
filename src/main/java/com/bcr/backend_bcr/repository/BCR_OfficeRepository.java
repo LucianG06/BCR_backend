@@ -11,4 +11,5 @@ import java.util.List;
 public interface BCR_OfficeRepository extends JpaRepository<BCR_Office, Integer> {
     @Query("SELECT p FROM BCR_Office p WHERE CONCAT(p.nume, p.strada, p.oras) LIKE %?1%")
     List<BCR_Office> findBCR_OfficeByRegex(String regex);
+
 }
