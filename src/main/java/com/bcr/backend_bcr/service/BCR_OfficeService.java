@@ -22,35 +22,34 @@ public class BCR_OfficeService {
     }
 
     public List<BCR_Office> getOfficesByRegex(String regex) {
-        List<BCR_Office> offices = new ArrayList<>();
-        List<BCR_Office> allOffices = repository.findAll();
-        Pattern pattern = Pattern.compile(regex);
+//        List<BCR_Office> offices = new ArrayList<>();
+//        List<BCR_Office> allOffices = repository.findAll();
+//        Pattern pattern = Pattern.compile(regex);
+//
+//        for (BCR_Office office : allOffices) {
+//            if (pattern.matcher(office.getNume()).matches()) {
+//                if (!offices.contains(office)) {
+//                    offices.add(office);
+//                }
+//            }
+//        }
+//
+//        for (BCR_Office office : allOffices) {
+//            if (pattern.matcher(office.getStrada()).matches()) {
+//                if (!offices.contains(office)) {
+//                    offices.add(office);
+//                }
+//            }
+//        }
+//
+//        for (BCR_Office office : allOffices) {
+//            if (pattern.matcher(office.getOras()).matches()) {
+//                if (!offices.contains(office)) {
+//                    offices.add(office);
+//                }
+//            }
+//        }
 
-        for (BCR_Office office : allOffices) {
-            if (pattern.matcher(office.getNume()).matches()) {
-                if (!offices.contains(office)) {
-                    offices.add(office);
-                }
-            }
-        }
-
-        for (BCR_Office office : allOffices) {
-            if (pattern.matcher(office.getStrada()).matches()) {
-                if (!offices.contains(office)) {
-                    offices.add(office);
-                }
-            }
-        }
-
-        for (BCR_Office office : allOffices) {
-            if (pattern.matcher(office.getOras()).matches()) {
-                if (!offices.contains(office)) {
-                    offices.add(office);
-                }
-            }
-        }
-//        offices.addAll(repository.findBCR_OfficeByNumeRegex(regex));
-//        offices.addAll(repository.findBCR_OfficeByOrasRegex(regex));
-        return offices;
+        return repository.findBCR_OfficeByRegex(regex);
     }
 }
