@@ -3,11 +3,12 @@ package com.bcr.backend_bcr.controller;
 import com.bcr.backend_bcr.model.BCR_Office;
 import com.bcr.backend_bcr.service.BCR_OfficeService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 @RestController
@@ -15,6 +16,11 @@ import java.util.List;
 public class BCR_OfficeController {
 
     private final BCR_OfficeService service;
+
+    @PostMapping("/post/{id}")
+    public void post(@PathVariable Integer id) {
+        service.postId(id);
+    }
 
     @GetMapping("/getAllOffices")
     public List<BCR_Office> getAllOffices() {
@@ -29,5 +35,16 @@ public class BCR_OfficeController {
     @GetMapping("/getAllInCityByRegex/{regex}/{city}")
     public List<BCR_Office> getAllOfficeInCityByRegex(@PathVariable String regex, @PathVariable String city) {
         return service.getBCR_OfficeInCityByRegex(regex, city);
+    }
+
+    @GetMapping("/getHoursForBCR_OfficeDate/{date}")
+    public List<LocalTime> getHoursForBCR_OfficeDate(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) {
+        return service.getHoursForBCR_OfficeDate(date);
+    }
+
+    @PostMapping("/makeAppointemnt/{dateTime}/{email}")
+    public void makeAppointment(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime dateTime,
+                                @PathVariable String email) {
+        service.makeAppointment(dateTime, email);
     }
 }
