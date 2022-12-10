@@ -5,7 +5,7 @@ import com.bcr.backend_bcr.repository.BCR_OfficeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
+import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -17,6 +17,7 @@ public class BCR_OfficeService {
 
     private final BCR_OfficeRepository repository;
     public Integer officeId;
+    public String phoneNumber;
     public Map<LocalDate, List<LocalTime>> availableHours = new HashMap<>();
 
     public void calculateAvailableHours(LocalDate date) {
@@ -89,5 +90,52 @@ public class BCR_OfficeService {
         }
 
         makeAppointment(date, time);
+    }
+
+    public void sendSms(String telefon) {
+        phoneNumber = telefon;
+        String[] params = {"C:\\Users\\lucia\\AppData\\Local\\Programs\\Python\\Python311\\python.exe", "src\\main\\resources\\send_sms.py",
+                telefon};
+        try {
+            Process p = Runtime.getRuntime().exec(params);
+            try {
+                p.waitFor();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String checkCode(String code) {
+        String[] params = {"C:\\Users\\lucia\\AppData\\Local\\Programs\\Python\\Python311\\python.exe", "src\\main\\resources\\check_code.py",
+                phoneNumber, code};
+        try {
+            Process p = Runtime.getRuntime().exec(params);
+            try {
+                p.waitFor();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        File file = new File("src/main/resources/static/code.txt");
+        try {
+            BufferedReader read = new BufferedReader(new FileReader(file));
+            try {
+                String status = read.readLine();
+                read.close();
+                file.delete();
+                return status;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 }

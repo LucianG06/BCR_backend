@@ -47,4 +47,14 @@ public class BCR_OfficeController {
                                 @PathVariable String email) {
         service.makeAppointment(dateTime, email);
     }
+
+    @PostMapping("/sendSms/{telefon}")
+    public void sendSms(@PathVariable String telefon) {
+        service.sendSms(telefon);
+    }
+
+    @GetMapping("/checkStatus/{code}")
+    public String checkCode(@PathVariable String code) {
+        return service.checkCode(code);
+    }
 }
