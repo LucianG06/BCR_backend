@@ -50,4 +50,13 @@ public class BCR_Office {
     @NotNull
     private String deschis;
 
+    @NotNull
+    private String distanta;
+
+    @NotNull
+    private String distantaCuMasina;
+
+    @NotNull
+    private String minuteCuMasina;
+
 }

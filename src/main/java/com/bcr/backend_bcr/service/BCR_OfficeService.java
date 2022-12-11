@@ -57,7 +57,10 @@ public class BCR_OfficeService {
     }
 
     public List<BCR_Office> getOfficesByRegex(String regex) {
-        return repository.findBCR_OfficeByRegex(regex);
+        List<BCR_Office> offices = repository.findBCR_OfficeByRegex(regex);
+
+        offices.sort(Comparator.comparingDouble(office -> Double.parseDouble(office.getDistanta().split(" km")[0])));
+        return offices;
     }
 
     public List<BCR_Office> getBCR_OfficeInCityByRegex(String regex, String city) {

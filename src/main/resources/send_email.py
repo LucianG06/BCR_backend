@@ -22,6 +22,8 @@ html = f"""
 <!DOCTYPE html>
 <html>
 <body>
+<head>
+    <script src="https://kit.fontawesome.com/6d243932b4.js" crossorigin="anonymous"></script> </head>
     <div style="text-align: center;">
     <img src="https://i.imgur.com/BTNUKW3.png" alt="logo"> 
     </div>
@@ -43,16 +45,21 @@ html = f"""
             Data si interval orar: <b>{data}, {ora} </b> <br>
             Adresa: <b>{strada} </b>  <br>
 
-            harta: <br> <img src="https://maps.googleapis.com/maps/api/staticmap?center={latitudine},{longitudine}&zoom=14&size=400x400&markers=color:blue%7Clabel:B%7C{latitudine},{longitudine}&key=AIzaSyCjPrn6xkqvduxlGJxFfb-Weic5ReEcb14"</img> <br>
-            <a href="https://www.google.com/maps/search/?api=1&query={latitudine},{longitudine}">Afiseaza traseul pe harta</a><br> <br>
-            <a href="https://www.google.com">Anuleaza Vizita</a><br>
+            <br> <img src="https://maps.googleapis.com/maps/api/staticmap?center={latitudine},{longitudine}&zoom=14&size=400x400&markers=color:blue%7Clabel:B%7C{latitudine},{longitudine}&key=AIzaSyCjPrn6xkqvduxlGJxFfb-Weic5ReEcb14"</img> <br>
+            <img src = "https://i.imgur.com/dxdpANF.png"/><a href="https://www.google.com/maps/search/?api=1&query={latitudine},{longitudine}">Afiseaza traseul pe harta</a><br> <br>
+            
+            <img src = "https://i.imgur.com/SRr1oxx.png"/><a href="google.com">Anuleaza Vizita</a><br>
+            
             <br>
         <br>
         <br>
         Pentru siguranta ta si a noastra, te rugam sa porti masca de protectie pe tot parcursul vizitei. Pe curand! <br> 
-            Cu drag, <br> Echipa BCR <br>
+            Cu drag, <br> Echipa BCR <br> <br>
         </p>
 
+        <h1 style="font-family : 'Franklin Gothic Medium'; font-size:14px">Acest mesaj a fost generat automat, te rugam sa nu dai reply. Pentru orice intrebare, scrie-ne un e-mail la contact.center@bcr.ro sau suna-ne la *2227.
+        </h1> 
+        <img src = "https://i.imgur.com/RjI4MJJ.png"> &emsp;<img src = "https://i.imgur.com/KQcteS4.png">  &emsp;<img src = "https://i.imgur.com/TmZr3l9.png">
 
     </h2>
 </div>
